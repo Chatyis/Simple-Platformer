@@ -1,4 +1,4 @@
-## Thing to keep in mind:
+## Things to keep in mind:
 * Before pushing your changes make sure not to push to the **main** branch!
 * In order to keep commits connected to the issue, please keep to the conventional commits described in the Commits section
 * When ticket is ready for a review reassign and add **code review** label
