@@ -1,3 +1,9 @@
 [gd_scene format=3 uid="uid://beq12pde7upoq"]
 
 [node name="Main" type="Node"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
