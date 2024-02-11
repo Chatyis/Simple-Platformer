@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://qsyn1huyxxi"]
+
+[ext_resource type="Script" path="res://prefabs/platform/platform_decaying.cs" id="1_c3riw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0avqm"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3skco"]
+size = Vector2(38, 1.25)
+
+[node name="Platform Decaying" type="Node2D"]
+script = ExtResource("1_c3riw")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="AnimatableBody2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.376471, 0.741176, 0.407843, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_0avqm")
+
+[node name="Area2D" type="Area2D" parent="AnimatableBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/Area2D"]
+position = Vector2(20, -1)
+shape = SubResource("RectangleShape2D_3skco")
+debug_color = Color(0.792157, 0.211765, 0.901961, 0.419608)
+
+[node name="EnableTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_exited" from="AnimatableBody2D/Area2D" to="." method="OnArea2DBodyExited"]
