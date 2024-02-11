@@ -27,4 +27,9 @@ public partial class Player : CharacterBody2D
 
 		MoveAndSlide();
 	}
+
+	public void GameOver()
+	{
+		GD.Print("lost");
+	}
 }
