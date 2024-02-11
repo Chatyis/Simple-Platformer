@@ -5,6 +5,13 @@
 * Always merge with option **Squash and Merge**
 * Remove branch from the remote after it is merged to the **main** branch
 
+## Scripting and files
+
+### Naming files and scripting:
+* prefabs - snake_case
+* nodes in scene, script names, method names (including signals)  - PascalCase
+* variables - camelCase
+
 ## Issues
 
 ### Naming issues:
