@@ -41,7 +41,7 @@ _data = {
 "move_loop": SubResource("Animation_tkq8r")
 }
 
-[node name="Platform Moving" type="Node2D"]
+[node name="PlatformMoving" type="Node2D"]
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 

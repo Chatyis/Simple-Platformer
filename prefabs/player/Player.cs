@@ -30,6 +30,6 @@ public partial class Player : CharacterBody2D
 
 	public void GameOver()
 	{
-		GD.Print("lost");
+		GetTree().ReloadCurrentScene();
 	}
 }

@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://beq12pde7upoq"]
+[gd_scene load_steps=9 format=3 uid="uid://beq12pde7upoq"]
 
 [ext_resource type="Script" path="res://prefabs/player/Player.cs" id="1_uyegs"]
 [ext_resource type="PackedScene" uid="uid://puypkfthfodd" path="res://prefabs/trap/trap.tscn" id="2_caikg"]
 [ext_resource type="PackedScene" uid="uid://bd7ph0418s021" path="res://prefabs/platform/platform.tscn" id="2_h0d27"]
 [ext_resource type="PackedScene" uid="uid://2v2nr8hn5lml" path="res://prefabs/platform/platform_moving.tscn" id="3_wbw8a"]
 [ext_resource type="PackedScene" uid="uid://qsyn1huyxxi" path="res://prefabs/platform/platform_decaying.tscn" id="4_2n8fv"]
+[ext_resource type="PackedScene" uid="uid://ro4srktsjns3" path="res://prefabs/enemy/enemy.tscn" id="6_ii0mq"]
+[ext_resource type="PackedScene" uid="uid://bxbood5pv6bxu" path="res://prefabs/fall_death_area/fall_death_area.tscn" id="7_relt8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whask"]
 size = Vector2(40, 40)
@@ -34,13 +36,27 @@ shape = SubResource("RectangleShape2D_whask")
 
 [node name="Platform" parent="." instance=ExtResource("2_h0d27")]
 position = Vector2(-7, 610)
-scale = Vector2(29.36, 1)
+scale = Vector2(26.68, 1)
 
-[node name="Platform Moving" parent="." instance=ExtResource("3_wbw8a")]
-position = Vector2(357, 479)
-
-[node name="Platform Decaying" parent="." instance=ExtResource("4_2n8fv")]
-position = Vector2(253, 543)
+[node name="PlatformDecaying" parent="." instance=ExtResource("4_2n8fv")]
+position = Vector2(239, 526)
 
 [node name="Trap" parent="." instance=ExtResource("2_caikg")]
-position = Vector2(122, 553)
+position = Vector2(946, 592)
+scale = Vector2(1.90987, 1.90987)
+
+[node name="Enemy" parent="." instance=ExtResource("6_ii0mq")]
+position = Vector2(622, 571)
+
+[node name="Platform2" parent="." instance=ExtResource("2_h0d27")]
+position = Vector2(780, 570)
+
+[node name="Platform3" parent="." instance=ExtResource("2_h0d27")]
+position = Vector2(431, 570)
+
+[node name="FallDeathArea" parent="." instance=ExtResource("7_relt8")]
+position = Vector2(537, 658)
+scale = Vector2(160.393, -2.54997)
+
+[node name="PlatformMoving" parent="." instance=ExtResource("3_wbw8a")]
+position = Vector2(371, 466)
