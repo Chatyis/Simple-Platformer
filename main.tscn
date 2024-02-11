@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://beq12pde7upoq"]
 
 [ext_resource type="Script" path="res://prefabs/player/Player.cs" id="1_uyegs"]
+[ext_resource type="PackedScene" uid="uid://puypkfthfodd" path="res://prefabs/trap/trap.tscn" id="2_caikg"]
 [ext_resource type="PackedScene" uid="uid://bd7ph0418s021" path="res://prefabs/platform/platform.tscn" id="2_h0d27"]
 [ext_resource type="PackedScene" uid="uid://2v2nr8hn5lml" path="res://prefabs/platform/platform_moving.tscn" id="3_wbw8a"]
 [ext_resource type="PackedScene" uid="uid://qsyn1huyxxi" path="res://prefabs/platform/platform_decaying.tscn" id="4_2n8fv"]
-[ext_resource type="PackedScene" uid="uid://puypkfthfodd" path="res://prefabs/trap/trap.tscn" id="2_caikg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whask"]
 size = Vector2(40, 40)
@@ -41,9 +41,6 @@ position = Vector2(357, 479)
 
 [node name="Platform Decaying" parent="." instance=ExtResource("4_2n8fv")]
 position = Vector2(253, 543)
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2(570, 629)
-shape = SubResource("RectangleShape2D_53nnl")
 
 [node name="Trap" parent="." instance=ExtResource("2_caikg")]
 position = Vector2(122, 553)
