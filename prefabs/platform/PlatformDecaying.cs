@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class platform_decaying : Node2D
+public partial class PlatformDecaying : Node2D
 {
 	public ColorRect colorRect;
 	public CollisionShape2D collisionShape2D;
