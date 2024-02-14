@@ -28,3 +28,7 @@ shape = SubResource("RectangleShape2D_whask")
 position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_e8s53")
 debug_color = Color(0.898039, 0.129412, 0.698039, 0.419608)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
