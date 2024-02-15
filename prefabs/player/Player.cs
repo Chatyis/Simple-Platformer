@@ -29,14 +29,13 @@ public partial class Player : CharacterBody2D
 
 		if (Input.IsActionJustPressed("jump") && (IsOnFloor() || canDoubleJump))
 		{
+			velocity.Y = JumpVelocity;
 			if (!IsOnFloor())
 			{
 				canDoubleJump = false;
-				velocity.Y = JumpVelocity;
 			}
 			else
 			{
-				velocity.Y = JumpVelocity;
 				jumpEmpowerTimer.Start();
 			}
 		}
