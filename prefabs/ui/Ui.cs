@@ -1,6 +1,5 @@
 using Godot;
 using Platformer;
-using System;
 
 public partial class Ui : CanvasLayer
 {
