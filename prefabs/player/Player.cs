@@ -1,4 +1,5 @@
 using Godot;
+using Platformer;
 
 public partial class Player : CharacterBody2D
 {
@@ -53,6 +54,7 @@ public partial class Player : CharacterBody2D
 
 	public void GameOver()
 	{
+		GlobalVar.Coins = 0;
 		GetTree().ReloadCurrentScene();
 	}
 
