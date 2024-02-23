@@ -6,7 +6,8 @@ public partial class DeadlyArea : Area2D
 	{
 		if (body.Name == "Player")
 		{
-			body.CallDeferred("GameOver");
+			body.CallDeferred("TakeDamage");
+			body.CallDeferred("Knockback", GlobalPosition);
 		}
 	}
 }
