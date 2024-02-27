@@ -14,6 +14,12 @@ public partial class Ui : CanvasLayer
 		UpdateScore();
 	}
 
+	public void TogglePausedGameText()
+	{
+		var pausedLabel = GetNode<Label>("Pause");
+		pausedLabel.Visible = !pausedLabel.Visible;
+	}
+	
 	private void UpdateScore()
 	{
 		GetNode<Label>("Coins").Text = "Score: " + GlobalVar.Coins.ToString();

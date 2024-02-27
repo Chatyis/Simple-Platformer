@@ -19,7 +19,7 @@ public partial class Player : CharacterBody2D
 		_knockbackTimer = GetNode<Timer>("KnockbackTimer");
 		_immunityWindowTimer = GetNode<Timer>("ImmunityWindowTimer");
 	}
-
+	
 	public override void _PhysicsProcess(double delta)
 	{
 		var velocity = Velocity;
@@ -32,7 +32,7 @@ public partial class Player : CharacterBody2D
 		{
 			_canDoubleJump = true;
 		}
-
+		
 		if (Input.IsActionJustPressed("jump") && (IsOnFloor() || _canDoubleJump))
 		{
 			velocity.Y = JumpVelocity;
