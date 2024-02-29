@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqcb56sn6dmux"]
+
+[ext_resource type="PackedScene" uid="uid://cnlgksrrg3rjf" path="res://prefabs/player/player.tscn" id="1_b4umi"]
+[ext_resource type="PackedScene" uid="uid://bd7ph0418s021" path="res://prefabs/platform/platform.tscn" id="2_kypwf"]
+[ext_resource type="PackedScene" uid="uid://bxbood5pv6bxu" path="res://prefabs/fall_death_area/fall_death_area.tscn" id="6_nfgv0"]
+[ext_resource type="PackedScene" uid="uid://dyfxkpvnu46b8" path="res://prefabs/ui/ui.tscn" id="9_3loud"]
+
+[node name="Main" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_b4umi")]
+
+[node name="Platform" parent="." instance=ExtResource("2_kypwf")]
+position = Vector2(-7, 610)
+scale = Vector2(26.68, 1)
+
+[node name="Platform2" parent="." instance=ExtResource("2_kypwf")]
+position = Vector2(265, 302)
+scale = Vector2(1, 6.16)
+
+[node name="Platform3" parent="." instance=ExtResource("2_kypwf")]
+position = Vector2(428, 305)
+scale = Vector2(1.00035, 7.67515)
+
+[node name="FallDeathArea" parent="." instance=ExtResource("6_nfgv0")]
+position = Vector2(537, 658)
+scale = Vector2(160.393, -2.54997)
+
+[node name="Ui" parent="." instance=ExtResource("9_3loud")]

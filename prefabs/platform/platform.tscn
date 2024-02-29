@@ -3,11 +3,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0avqm"]
 size = Vector2(40, 40)
 
-[node name="Platform" type="Node2D"]
+[node name="Platform" type="Node2D" groups=["terrain"]]
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." groups=["terrain"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" groups=["terrain"]]
 position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_0avqm")
 
