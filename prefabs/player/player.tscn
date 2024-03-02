@@ -52,5 +52,9 @@ scale = Vector2(2.2157, 1.56)
 position = Vector2(10.3043, 10)
 shape = SubResource("RectangleShape2D_cmpgf")
 
+[node name="CoyoteTimeTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="body_entered" from="WallJumpArea2D" to="." method="OnWallJumpArea2DBodyEntered"]
 [connection signal="body_exited" from="WallJumpArea2D" to="." method="OnWallJumpArea2DBodyExited"]
