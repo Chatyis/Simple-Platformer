@@ -20,6 +20,12 @@ public partial class Ui : CanvasLayer
 		pausedLabel.Visible = !pausedLabel.Visible;
 	}
 	
+	public void ToggleExtraLifeIcon(bool isTransparent)
+	{
+		var extraLifeIcon = GetNode<TextureRect>("ExtraLife");
+		extraLifeIcon.Modulate = new Color(1f, 1f, 1f, isTransparent ? 0.2f : 1f);
+	}
+	
 	private void UpdateScore()
 	{
 		GetNode<Label>("Coins").Text = "Score: " + GlobalVar.Coins.ToString();

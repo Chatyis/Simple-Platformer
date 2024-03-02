@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=3 uid="uid://b1vgp4s4ujsi8"]
+
+[ext_resource type="PackedScene" uid="uid://cnlgksrrg3rjf" path="res://prefabs/player/player.tscn" id="1_kpg8s"]
+[ext_resource type="PackedScene" uid="uid://bd7ph0418s021" path="res://prefabs/platform/platform.tscn" id="2_lnc8g"]
+[ext_resource type="PackedScene" uid="uid://qsyn1huyxxi" path="res://prefabs/platform/platform_decaying.tscn" id="3_dmrcb"]
+[ext_resource type="PackedScene" uid="uid://puypkfthfodd" path="res://prefabs/trap/trap.tscn" id="4_rldpl"]
+[ext_resource type="PackedScene" uid="uid://ro4srktsjns3" path="res://prefabs/enemy/enemy.tscn" id="5_llt0d"]
+[ext_resource type="PackedScene" uid="uid://bxbood5pv6bxu" path="res://prefabs/fall_death_area/fall_death_area.tscn" id="6_4fj6c"]
+[ext_resource type="PackedScene" uid="uid://2v2nr8hn5lml" path="res://prefabs/platform/platform_moving.tscn" id="7_1kvpu"]
+[ext_resource type="PackedScene" uid="uid://v3n2xs4lea57" path="res://prefabs/checkpoint/checkpoint.tscn" id="8_c67ko"]
+[ext_resource type="PackedScene" uid="uid://dyfxkpvnu46b8" path="res://prefabs/ui/ui.tscn" id="9_p3bwv"]
+[ext_resource type="PackedScene" uid="uid://dnh5q265o544p" path="res://prefabs/coin/coin.tscn" id="10_gqj8s"]
+[ext_resource type="PackedScene" uid="uid://e87e73gqennp" path="res://prefabs/pickupable/extra_health/extra_health.tscn" id="11_8ejmo"]
+
+[node name="Main" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_kpg8s")]
+
+[node name="Platform" parent="." instance=ExtResource("2_lnc8g")]
+position = Vector2(-7, 610)
+scale = Vector2(26.68, 1)
+
+[node name="PlatformDecaying" parent="." instance=ExtResource("3_dmrcb")]
+position = Vector2(239, 526)
+
+[node name="Trap" parent="." instance=ExtResource("4_rldpl")]
+position = Vector2(946, 592)
+scale = Vector2(1.90987, 1.90987)
+
+[node name="Enemy" parent="." instance=ExtResource("5_llt0d")]
+position = Vector2(622, 571)
+
+[node name="Platform2" parent="." instance=ExtResource("2_lnc8g")]
+position = Vector2(780, 570)
+
+[node name="Platform3" parent="." instance=ExtResource("2_lnc8g")]
+position = Vector2(431, 570)
+
+[node name="FallDeathArea" parent="." instance=ExtResource("6_4fj6c")]
+position = Vector2(537, 658)
+scale = Vector2(160.393, -2.54997)
+
+[node name="PlatformMoving" parent="." instance=ExtResource("7_1kvpu")]
+position = Vector2(371, 466)
+
+[node name="checkpoint" parent="." instance=ExtResource("8_c67ko")]
+position = Vector2(1013, 568)
+
+[node name="Ui" parent="." instance=ExtResource("9_p3bwv")]
+
+[node name="Coin" parent="." instance=ExtResource("10_gqj8s")]
+position = Vector2(108, 563)
+
+[node name="Coin2" parent="." instance=ExtResource("10_gqj8s")]
+position = Vector2(179, 559)
+
+[node name="ExtraHealth" parent="." instance=ExtResource("11_8ejmo")]
+position = Vector2(72, 588)
