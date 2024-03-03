@@ -6,6 +6,7 @@ public partial class Player : CharacterBody2D
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 	public const float KnockBackPower = 400.0f;
+	private CanvasLayer _ui;
 	private readonly float _gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	private bool _canDoubleJump = true;
 	private bool _canWallJump;
@@ -20,6 +21,7 @@ public partial class Player : CharacterBody2D
 		_jumpEmpowerTimer = GetNode<Timer>("JumpEmpowerTimer");
 		_knockbackTimer = GetNode<Timer>("KnockbackTimer");
 		_immunityWindowTimer = GetNode<Timer>("ImmunityWindowTimer");
+		_ui = GetTree().Root.GetNode<CanvasLayer>("Main/Ui");
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -54,6 +56,7 @@ public partial class Player : CharacterBody2D
 			}
 			_immunityWindowTimer.Start();
 			_hasAdditionalLife = false;
+			_ui.CallDeferred("ToggleExtraLifeIcon", true);
 		}
 	}
 
@@ -66,6 +69,7 @@ public partial class Player : CharacterBody2D
 	public void AddSecondLife()
 	{
 		_hasAdditionalLife = true;
+		_ui.CallDeferred("ToggleExtraLifeIcon", false);
 	}
 
 	public void Knockback(Vector2 enemyPosition)
