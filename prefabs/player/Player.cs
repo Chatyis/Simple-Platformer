@@ -94,7 +94,7 @@ public partial class Player : CharacterBody2D
 	private void GameOver()
 	{
 		GlobalVar.Coins = 0;
-		GetTree().ReloadCurrentScene();
+		_ui.CallDeferred("ShowDeathMenu");
 	}
 
 	private void JumpEmpower(ref Vector2 velocity, double delta)

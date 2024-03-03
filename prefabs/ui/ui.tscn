@@ -4,14 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://b760nh5x41lrb" path="res://sprites/ui/heart.png" id="2_at6c1"]
 
 [node name="Ui" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_mlu30")
 
-[node name="Coins" type="Label" parent="."]
+[node name="Game" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Coins" type="Label" parent="Game"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -114.0
-offset_right = 114.0
+offset_left = 442.0
+offset_right = 670.0
 offset_bottom = 83.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 60
@@ -19,22 +27,88 @@ text = "Score: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Pause" type="Label" parent="."]
+[node name="Pause" type="Label" parent="Game"]
 visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 483.0
+offset_top = 277.5
+offset_right = 629.0
+offset_bottom = 330.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 38
+text = "PAUSED"
+
+[node name="DeathMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 38
-text = "PAUSED"
+
+[node name="ColorRect" type="ColorRect" parent="DeathMenu"]
+layout_mode = 0
+offset_left = -556.0
+offset_top = -304.0
+offset_right = 596.0
+offset_bottom = 344.0
+color = Color(0, 0, 0, 1)
+
+[node name="HFlowContainer" type="HFlowContainer" parent="DeathMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -55.0
+offset_right = 92.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 15
+alignment = 1
+
+[node name="StartBtn" type="Button" parent="DeathMenu/HFlowContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Start again"
+flat = true
+
+[node name="ExitBtn" type="Button" parent="DeathMenu/HFlowContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Exit"
+flat = true
+
+[node name="Label" type="Label" parent="DeathMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = -215.0
+offset_right = 193.0
+offset_bottom = -127.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER!"
 
 [node name="ExtraLife" type="TextureRect" parent="."]
 anchors_preset = 1
@@ -47,3 +121,6 @@ offset_bottom = 88.0
 grow_horizontal = 0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_at6c1")
+
+[connection signal="pressed" from="DeathMenu/HFlowContainer/StartBtn" to="." method="OnStartBtnPressed"]
+[connection signal="pressed" from="DeathMenu/HFlowContainer/ExitBtn" to="." method="OnExitBtnPressed"]
