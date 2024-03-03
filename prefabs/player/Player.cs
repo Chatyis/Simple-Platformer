@@ -11,9 +11,12 @@ public partial class Player : CharacterBody2D
 	private bool _canDoubleJump = true;
 	private bool _canWallJump;
 	private bool _hasAdditionalLife = true;
+	private bool _canUseCoyoteTime;
+	private bool _wasOnFloorBeforeTogglingCoyoteTime;
 	private Timer _immunityWindowTimer;
 	private Timer _jumpEmpowerTimer;
 	private Timer _knockbackTimer;
+	private Timer _coyoteTimeTimer;
 	private Vector2 _wallJumpDirection = Vector2.Zero;
 	
 	public override void _Ready()
@@ -22,6 +25,7 @@ public partial class Player : CharacterBody2D
 		_knockbackTimer = GetNode<Timer>("KnockbackTimer");
 		_immunityWindowTimer = GetNode<Timer>("ImmunityWindowTimer");
 		_ui = GetTree().Root.GetNode<CanvasLayer>("Main/Ui");
+		_coyoteTimeTimer = GetNode<Timer>("CoyoteTimeTimer");
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -41,6 +45,8 @@ public partial class Player : CharacterBody2D
 
 		PlayerSpeedDecay(ref velocity, xMovementDirection, delta);
 
+		CoyoteTime();
+		
 		Velocity = velocity;
 
 		MoveAndSlide();
@@ -125,9 +131,11 @@ public partial class Player : CharacterBody2D
 	
 	private void PlayerJump(ref Vector2 velocity)
 	{
-		if (Input.IsActionJustPressed("jump") && (IsOnFloor() || _canDoubleJump || _canWallJump))
+		var coyoteTimeCheck = _coyoteTimeTimer.TimeLeft > 0 && _canUseCoyoteTime;
+		
+		if (Input.IsActionJustPressed("jump") && (IsOnFloor() || _canDoubleJump || _canWallJump || coyoteTimeCheck))
 		{
-			if (!IsOnFloor() && !_canWallJump)
+			if (!IsOnFloor() && !_canWallJump && !coyoteTimeCheck)
 			{
 				_canDoubleJump = false;
 				velocity.Y = JumpVelocity;
@@ -138,6 +146,7 @@ public partial class Player : CharacterBody2D
 			}
 			else
 			{
+				_canUseCoyoteTime = false;
 				_jumpEmpowerTimer.Start();
 				velocity.Y = JumpVelocity;
 			}
@@ -146,7 +155,7 @@ public partial class Player : CharacterBody2D
 	
 	private void GravityImpactAndGrounded(ref Vector2 velocity, double delta)
 	{
-		if (!IsOnFloor())
+		if (!IsOnFloor() && _coyoteTimeTimer.TimeLeft == 0)
 		{
 			velocity.Y += _gravity * (float)delta;
 		}
@@ -156,6 +165,20 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
+	private void CoyoteTime()
+	{
+		if (!IsOnFloor() && _wasOnFloorBeforeTogglingCoyoteTime)
+		{
+			_wasOnFloorBeforeTogglingCoyoteTime = false;
+			_coyoteTimeTimer.Start();
+		}
+		else if (IsOnFloor())
+		{
+			_wasOnFloorBeforeTogglingCoyoteTime = true;
+			_canUseCoyoteTime = true;
+		}
+	}
+	
 	private void OnWallJumpArea2DBodyEntered(Node2D body)
 	{
 		if (body.GetGroups().BinarySearch("terrain") > -1)
