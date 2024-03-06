@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bhnm36wdj324y"
+path="res://.godot/imported/ludek.aseprite-ed02ab07f070c23516151a69b93c50bb.res"
+
+[deps]
+
+source_file="res://prefabs/player/ludek.aseprite"
+dest_files=["res://.godot/imported/ludek.aseprite-ed02ab07f070c23516151a69b93c50bb.res"]
+
+[params]
+

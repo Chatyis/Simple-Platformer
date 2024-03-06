@@ -28,7 +28,7 @@ position = Vector2(-7, 610)
 scale = Vector2(26.68, 1)
 
 [node name="PlatformDecaying" parent="." instance=ExtResource("4_2n8fv")]
-position = Vector2(239, 526)
+position = Vector2(229, 492)
 
 [node name="Trap" parent="." instance=ExtResource("2_caikg")]
 position = Vector2(946, 592)
