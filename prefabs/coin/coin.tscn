@@ -1,9 +1,60 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnh5q265o544p"]
+[gd_scene load_steps=11 format=3 uid="uid://dnh5q265o544p"]
 
 [ext_resource type="Script" path="res://prefabs/coin/CoinCollision.cs" id="1_wgv6y"]
+[ext_resource type="Texture2D" uid="uid://dk7r3a4fwqwfd" path="res://sprites/terrain/coin.png" id="2_0aukq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbf0e"]
-size = Vector2(42, 40)
+size = Vector2(34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pltnx"]
+atlas = ExtResource("2_0aukq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g07di"]
+atlas = ExtResource("2_0aukq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s4a7"]
+atlas = ExtResource("2_0aukq")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4v1s"]
+atlas = ExtResource("2_0aukq")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66nge"]
+atlas = ExtResource("2_0aukq")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfga6"]
+atlas = ExtResource("2_0aukq")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1nujl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pltnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g07di")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1s4a7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4v1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66nge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfga6")
+}],
+"loop": true,
+"name": &"rotate",
+"speed": 5.0
+}]
 
 [node name="Coin" type="Node2D"]
 script = ExtResource("1_wgv6y")
@@ -11,12 +62,22 @@ script = ExtResource("1_wgv6y")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(20, 19)
+position = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_mbf0e")
 
 [node name="ColorRect" type="ColorRect" parent="Area2D"]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(1, 1, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+texture_filter = 1
+position = Vector2(16, 16)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_1nujl")
+animation = &"rotate"
+autoplay = "rotate"
+frame_progress = 0.858195
 
 [connection signal="body_entered" from="Area2D" to="." method="OnArea2DBodyEntered"]

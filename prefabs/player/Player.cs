@@ -134,9 +134,8 @@ public partial class Player : CharacterBody2D
 			_sprite2DPlayer.FlipH = Mathf.Sign(xMovementDirection) == -1;
 			_sprite2DPlayer.Offset = new Vector2(Mathf.Sign(xMovementDirection) == -1 ? 1 : 0, 0);
 		}
-		else if(IsOnFloor() && _knockbackTimer.TimeLeft == 0)
+		else if (IsOnFloor() && _knockbackTimer.TimeLeft == 0)
 		{
-			GD.Print("Idling");
 			_animationPlayer.Play(_wasInAirBefore?"Land":"Idle");
 		}
 	}

@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://2v2nr8hn5lml"]
+[gd_scene load_steps=6 format=3 uid="uid://2v2nr8hn5lml"]
+
+[ext_resource type="Texture2D" uid="uid://sepua7b12cbj" path="res://sprites/terrain/grass_platform.png" id="1_olcnq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0avqm"]
-size = Vector2(40, 40)
+size = Vector2(40, 8)
 
 [sub_resource type="Animation" id="Animation_ilkop"]
 length = 0.001
@@ -46,10 +48,11 @@ _data = {
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
-position = Vector2(20, 20)
+position = Vector2(20, 4)
 shape = SubResource("RectangleShape2D_0avqm")
 
 [node name="ColorRect" type="ColorRect" parent="AnimatableBody2D"]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0.337255, 0.701961, 0.803922, 1)
@@ -60,3 +63,8 @@ libraries = {
 "": SubResource("AnimationLibrary_6ldi5")
 }
 autoplay = "move_loop"
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+position = Vector2(20, 4)
+scale = Vector2(2, 2)
+texture = ExtResource("1_olcnq")
