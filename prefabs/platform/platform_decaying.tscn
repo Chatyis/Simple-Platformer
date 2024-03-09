@@ -1,32 +1,159 @@
-[gd_scene load_steps=4 format=3 uid="uid://qsyn1huyxxi"]
+[gd_scene load_steps=22 format=3 uid="uid://qsyn1huyxxi"]
 
 [ext_resource type="Script" path="res://prefabs/platform/PlatformDecaying.cs" id="1_c3riw"]
+[ext_resource type="Texture2D" uid="uid://oyhogsqscysn" path="res://sprites/terrain/decaying_platform.png" id="2_da3dr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwqgi"]
+atlas = ExtResource("2_da3dr")
+region = Rect2(352, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6miy"]
+atlas = ExtResource("2_da3dr")
+region = Rect2(396, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhn16"]
+atlas = ExtResource("2_da3dr")
+region = Rect2(440, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0821"]
+atlas = ExtResource("2_da3dr")
+region = Rect2(484, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3fav"]
+atlas = ExtResource("2_da3dr")
+region = Rect2(528, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rrbd"]
+atlas = ExtResource("2_da3dr")
+region = Rect2(572, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0c32l"]
+atlas = ExtResource("2_da3dr")
+region = Rect2(616, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l46rn"]
+atlas = ExtResource("2_da3dr")
+region = Rect2(660, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjfvp"]
+atlas = ExtResource("2_da3dr")
+region = Rect2(0, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abwnv"]
+atlas = ExtResource("2_da3dr")
+region = Rect2(44, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m8w1"]
+atlas = ExtResource("2_da3dr")
+region = Rect2(88, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpypm"]
+atlas = ExtResource("2_da3dr")
+region = Rect2(132, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5ipu"]
+atlas = ExtResource("2_da3dr")
+region = Rect2(176, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w4cc"]
+atlas = ExtResource("2_da3dr")
+region = Rect2(220, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl515"]
+atlas = ExtResource("2_da3dr")
+region = Rect2(264, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xffmu"]
+atlas = ExtResource("2_da3dr")
+region = Rect2(308, 0, 44, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xg8yd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwqgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6miy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhn16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0821")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3fav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rrbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0c32l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l46rn")
+}],
+"loop": false,
+"name": &"decay",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjfvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abwnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m8w1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpypm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5ipu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w4cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dl515")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xffmu")
+}],
+"loop": false,
+"name": &"shake",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0avqm"]
-size = Vector2(40, 40)
+size = Vector2(36, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3skco"]
-size = Vector2(38, 1.25)
+size = Vector2(34, 1.25)
 
 [node name="PlatformDecaying" type="Node2D"]
 script = ExtResource("1_c3riw")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="AnimatableBody2D"]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0.376471, 0.741176, 0.407843, 1)
-metadata/_edit_use_anchors_ = true
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatableBody2D"]
+position = Vector2(18, 11)
+sprite_frames = SubResource("SpriteFrames_xg8yd")
+animation = &"shake"
+frame = 7
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
-position = Vector2(20, 20)
+position = Vector2(18, 5)
 shape = SubResource("RectangleShape2D_0avqm")
 
 [node name="Area2D" type="Area2D" parent="AnimatableBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/Area2D"]
-position = Vector2(20, -1)
+position = Vector2(18, -1)
 shape = SubResource("RectangleShape2D_3skco")
 debug_color = Color(0.792157, 0.211765, 0.901961, 0.419608)
 
@@ -34,4 +161,5 @@ debug_color = Color(0.792157, 0.211765, 0.901961, 0.419608)
 wait_time = 3.0
 one_shot = true
 
+[connection signal="body_entered" from="AnimatableBody2D/Area2D" to="." method="OnArea2DBodyEntered"]
 [connection signal="body_exited" from="AnimatableBody2D/Area2D" to="." method="OnArea2DBodyExited"]

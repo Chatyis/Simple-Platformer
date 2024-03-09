@@ -1,16 +1,84 @@
-[gd_scene load_steps=2 format=3 uid="uid://puypkfthfodd"]
+[gd_scene load_steps=12 format=3 uid="uid://puypkfthfodd"]
 
 [ext_resource type="PackedScene" uid="uid://1yrxn0doaj12" path="res://prefabs/deadly_area/deadly_area.tscn" id="1_fl8qy"]
+[ext_resource type="Script" path="res://prefabs/trap/Trap.cs" id="1_jo4n5"]
+[ext_resource type="Texture2D" uid="uid://fmpfwcn538br" path="res://sprites/terrain/bear_trap.png" id="2_bagw2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhbel"]
+atlas = ExtResource("2_bagw2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tlnk"]
+atlas = ExtResource("2_bagw2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnsdj"]
+atlas = ExtResource("2_bagw2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y0iu"]
+atlas = ExtResource("2_bagw2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bspuq"]
+atlas = ExtResource("2_bagw2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sru8f"]
+atlas = ExtResource("2_bagw2")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b34ya"]
+atlas = ExtResource("2_bagw2")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7xa5m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhbel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tlnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnsdj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8y0iu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bspuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sru8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b34ya")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="Trap" type="Node2D"]
+script = ExtResource("1_jo4n5")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="DeadlyArea" parent="StaticBody2D" instance=ExtResource("1_fl8qy")]
+scale = Vector2(1.4, 0.4)
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+visible = false
 offset_left = -10.0
 offset_top = -10.0
 offset_right = 10.0
 offset_bottom = 10.0
 color = Color(1, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_7xa5m")
+
+[connection signal="body_entered" from="StaticBody2D/DeadlyArea" to="." method="OnDeadlyAreaBodyEntered"]

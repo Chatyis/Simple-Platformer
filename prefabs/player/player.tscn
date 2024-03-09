@@ -1,27 +1,266 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnlgksrrg3rjf"]
+[gd_scene load_steps=15 format=3 uid="uid://cnlgksrrg3rjf"]
 
 [ext_resource type="Script" path="res://prefabs/player/Player.cs" id="1_8ucyp"]
+[ext_resource type="Texture2D" uid="uid://dcgj0tw8g21w0" path="res://prefabs/player/ludek.png" id="2_m26yc"]
+
+[sub_resource type="Animation" id="Animation_lwsqg"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_wwffe"]
+length = 0.55
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 13, 14, 15, 9, 11]
+}
+
+[sub_resource type="Animation" id="Animation_3hmi3"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+
+[sub_resource type="Animation" id="Animation_j2fly"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1xjgv"]
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 9, 11]
+}
+
+[sub_resource type="Animation" id="Animation_cw3tv"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [21, 22, 23, 24, 0]
+}
+
+[sub_resource type="Animation" id="Animation_6uq25"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 1, 2, 0, 3, 4, 3, 0]
+}
+
+[sub_resource type="Animation" id="Animation_v76eb"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_clgsk"]
+_data = {
+"Damage_taken": SubResource("Animation_lwsqg"),
+"Double_jump": SubResource("Animation_wwffe"),
+"Fall": SubResource("Animation_3hmi3"),
+"Idle": SubResource("Animation_j2fly"),
+"Jump": SubResource("Animation_1xjgv"),
+"Land": SubResource("Animation_cw3tv"),
+"Run": SubResource("Animation_6uq25"),
+"Wall_slide": SubResource("Animation_v76eb")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whask"]
-size = Vector2(40, 40)
+size = Vector2(25, 44)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8s53"]
-size = Vector2(31.25, 40)
+size = Vector2(19.5313, 44)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cmpgf"]
+size = Vector2(13.0884, 24.359)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_8ucyp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(12, 27.5)
+scale = Vector2(2.75, 2.75)
+texture = ExtResource("2_m26yc")
+hframes = 5
+vframes = 5
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"slice": "",
+"source": "res://prefabs/player/ludek.aseprite"
+}
 
-[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_clgsk")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(20, 20)
+position = Vector2(13.5, 22)
 shape = SubResource("RectangleShape2D_whask")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -29,7 +268,7 @@ position = Vector2(-5, 0)
 scale = Vector2(1.28, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(19.5312, 20)
+position = Vector2(14.4531, 22)
 shape = SubResource("RectangleShape2D_e8s53")
 debug_color = Color(0.898039, 0.129412, 0.698039, 0.419608)
 
@@ -49,12 +288,13 @@ position = Vector2(-3, 0)
 scale = Vector2(2.2157, 1.56)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallJumpArea2D"]
-position = Vector2(10.3043, 10)
+position = Vector2(7.44686, 12.1795)
 shape = SubResource("RectangleShape2D_cmpgf")
 
 [node name="CoyoteTimeTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="OnAnimationPlayerAnimationFinished"]
 [connection signal="body_entered" from="WallJumpArea2D" to="." method="OnWallJumpArea2DBodyEntered"]
 [connection signal="body_exited" from="WallJumpArea2D" to="." method="OnWallJumpArea2DBodyExited"]

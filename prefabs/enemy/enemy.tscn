@@ -1,20 +1,74 @@
-[gd_scene load_steps=3 format=3 uid="uid://ro4srktsjns3"]
+[gd_scene load_steps=11 format=3 uid="uid://ro4srktsjns3"]
 
 [ext_resource type="PackedScene" uid="uid://1yrxn0doaj12" path="res://prefabs/deadly_area/deadly_area.tscn" id="1_8je7s"]
 [ext_resource type="Script" path="res://prefabs/enemy/EnemyBehaviour.cs" id="1_a2ejq"]
+[ext_resource type="Texture2D" uid="uid://c0lcw21i3ggr0" path="res://sprites/terrain/bear.png" id="3_n2v25"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxtix"]
+atlas = ExtResource("3_n2v25")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sq2kh"]
+atlas = ExtResource("3_n2v25")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06ucn"]
+atlas = ExtResource("3_n2v25")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3e7cc"]
+atlas = ExtResource("3_n2v25")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi3et"]
+atlas = ExtResource("3_n2v25")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kn2ya"]
+atlas = ExtResource("3_n2v25")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k1qvm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxtix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sq2kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06ucn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3e7cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hi3et")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kn2ya")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="Enemy" type="Node2D"]
+scale = Vector2(1.56, 1.56)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_a2ejq")
 
-[node name="ColorRect" type="ColorRect" parent="CharacterBody2D"]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0.619608, 0.32549, 0.980392, 1)
-
 [node name="DeadlyArea" parent="CharacterBody2D" instance=ExtResource("1_8je7s")]
-position = Vector2(20, 20)
-scale = Vector2(2, 2)
+position = Vector2(22.5, 22.5)
+scale = Vector2(2.23978, 2.22801)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(22.5, 22.5)
+scale = Vector2(1.40625, 1.40625)
+sprite_frames = SubResource("SpriteFrames_k1qvm")
+autoplay = "default"
+frame_progress = 0.797261
 
 [connection signal="body_entered" from="CharacterBody2D/DeadlyArea" to="CharacterBody2D" method="OnBodyEntered"]

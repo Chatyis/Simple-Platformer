@@ -23,6 +23,10 @@ GlobalVar="*res://GlobalVar.cs"
 
 project/assembly_name="Simple Platformer"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
 [input]
 
 left={
