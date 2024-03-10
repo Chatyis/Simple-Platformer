@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjs8yqkli46wj"]
+
+[ext_resource type="Texture2D" uid="uid://gjdu2cuwfm3q" path="res://sprites/terrain/grass_tileset.png" id="1_yyr8j"]
+[ext_resource type="PackedScene" uid="uid://txf1bbraiyoj" path="res://prefabs/wall/wall.tscn" id="2_calh0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eihlo"]
+texture = ExtResource("1_yyr8j")
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_wnwrj"]
+scenes/1/scene = ExtResource("2_calh0")
+
+[sub_resource type="TileSet" id="TileSet_4x502"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_eihlo")
+sources/1 = SubResource("TileSetScenesCollectionSource_wnwrj")
+
+[node name="WallJumpable" type="TileMap"]
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_4x502")
+format = 2

@@ -65,6 +65,7 @@ animations = [{
 script = ExtResource("1_jo4n5")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+scale = Vector2(2, 2)
 
 [node name="DeadlyArea" parent="StaticBody2D" instance=ExtResource("1_fl8qy")]
 scale = Vector2(1.4, 0.4)

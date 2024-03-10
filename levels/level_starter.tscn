@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://bn42jptrnaobr"]
+
+[ext_resource type="PackedScene" uid="uid://cnlgksrrg3rjf" path="res://prefabs/player/player.tscn" id="1_mhtrj"]
+[ext_resource type="PackedScene" uid="uid://bxbood5pv6bxu" path="res://prefabs/fall_death_area/fall_death_area.tscn" id="2_pn2lk"]
+[ext_resource type="PackedScene" uid="uid://v3n2xs4lea57" path="res://prefabs/checkpoint/checkpoint.tscn" id="3_nvit7"]
+[ext_resource type="PackedScene" uid="uid://dyfxkpvnu46b8" path="res://prefabs/ui/ui.tscn" id="4_rkbt1"]
+[ext_resource type="Script" path="res://PlayerCamera.cs" id="5_uduvk"]
+[ext_resource type="Script" path="res://prefabs/game_manager/GameManager.cs" id="6_qobfo"]
+[ext_resource type="PackedScene" uid="uid://biu2byc5rkusx" path="res://tilemaps/terrain.tscn" id="7_dslxf"]
+[ext_resource type="PackedScene" uid="uid://xf88er3pw2h2" path="res://tilemaps/interactive_objects.tscn" id="8_1r7ib"]
+[ext_resource type="PackedScene" uid="uid://cjs8yqkli46wj" path="res://tilemaps/wall_jumpable.tscn" id="9_i5x40"]
+
+[node name="Main" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2466.0
+offset_top = -1650.0
+offset_right = -2466.0
+offset_bottom = -1650.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.64, 5.64)
+color = Color(0.411765, 0.713726, 0.996078, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_mhtrj")]
+position = Vector2(67, 373)
+
+[node name="FallDeathArea" parent="." instance=ExtResource("2_pn2lk")]
+position = Vector2(541, 710)
+scale = Vector2(160.393, -2.54997)
+
+[node name="checkpoint" parent="." instance=ExtResource("3_nvit7")]
+position = Vector2(1289, 288)
+
+[node name="Ui" parent="." instance=ExtResource("4_rkbt1")]
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+script = ExtResource("5_uduvk")
+
+[node name="GameManager" type="Node2D" parent="."]
+process_mode = 3
+script = ExtResource("6_qobfo")
+
+[node name="Terrain" parent="." instance=ExtResource("7_dslxf")]
+
+[node name="InteractiveObjects" parent="." instance=ExtResource("8_1r7ib")]
+
+[node name="WallJumpable" parent="." instance=ExtResource("9_i5x40")]

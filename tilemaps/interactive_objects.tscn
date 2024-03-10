@@ -1,0 +1,23 @@
+[gd_scene load_steps=9 format=3 uid="uid://xf88er3pw2h2"]
+
+[ext_resource type="PackedScene" uid="uid://dnh5q265o544p" path="res://prefabs/coin/coin.tscn" id="1_up0g1"]
+[ext_resource type="PackedScene" uid="uid://qsyn1huyxxi" path="res://prefabs/platform/platform_decaying.tscn" id="2_rltao"]
+[ext_resource type="PackedScene" uid="uid://2v2nr8hn5lml" path="res://prefabs/platform/platform_moving.tscn" id="3_eatdi"]
+[ext_resource type="PackedScene" uid="uid://ro4srktsjns3" path="res://prefabs/enemy/enemy.tscn" id="4_ifnf2"]
+[ext_resource type="PackedScene" uid="uid://e87e73gqennp" path="res://prefabs/pickupable/extra_health/extra_health.tscn" id="5_88yry"]
+[ext_resource type="PackedScene" uid="uid://puypkfthfodd" path="res://prefabs/trap/trap.tscn" id="6_qmtce"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_vt644"]
+scenes/1/scene = ExtResource("1_up0g1")
+scenes/3/scene = ExtResource("2_rltao")
+scenes/4/scene = ExtResource("3_eatdi")
+scenes/5/scene = ExtResource("4_ifnf2")
+scenes/6/scene = ExtResource("5_88yry")
+scenes/7/scene = ExtResource("6_qmtce")
+
+[sub_resource type="TileSet" id="TileSet_w1gjn"]
+sources/0 = SubResource("TileSetScenesCollectionSource_vt644")
+
+[node name="InteractiveObjects" type="TileMap"]
+tile_set = SubResource("TileSet_w1gjn")
+format = 2
