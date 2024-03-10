@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://txf1bbraiyoj"]
+
+[ext_resource type="Texture2D" uid="uid://gjdu2cuwfm3q" path="res://sprites/terrain/grass_tileset.png" id="1_0dcmg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylqni"]
+size = Vector2(18, 16)
+
+[node name="Wall" type="Node2D" groups=["terrain"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 0)
+texture = ExtResource("1_0dcmg")
+vframes = 4
+frame = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["terrain"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" groups=["terrain"]]
+shape = SubResource("RectangleShape2D_ylqni")

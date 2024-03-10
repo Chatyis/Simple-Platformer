@@ -1,7 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://e87e73gqennp"]
+[gd_scene load_steps=8 format=3 uid="uid://e87e73gqennp"]
 
 [ext_resource type="PackedScene" uid="uid://c2antsl0uvnay" path="res://prefabs/pickupable/pickupable.tscn" id="1_3wkcf"]
 [ext_resource type="Script" path="res://prefabs/pickupable/extra_health/ExtraHealthPickupable.cs" id="1_r4odj"]
+[ext_resource type="Texture2D" uid="uid://ben82swyd77r5" path="res://sprites/terrain/heart.png" id="3_7xt1y"]
+
+[sub_resource type="Animation" id="Animation_ro7jm"]
+resource_name = "Idle"
+length = 0.692
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 1, 3, 5, 6, 7, 0]
+}
+
+[sub_resource type="Animation" id="Animation_4w0em"]
+resource_name = "Pickup"
+length = 0.4515
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.1, 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15, 16]
+}
+
+[sub_resource type="Animation" id="Animation_fffed"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k5uwu"]
+_data = {
+"Idle": SubResource("Animation_ro7jm"),
+"Pickup": SubResource("Animation_4w0em"),
+"RESET": SubResource("Animation_fffed")
+}
 
 [node name="ExtraHealth" type="Node2D"]
 script = ExtResource("1_r4odj")
@@ -9,10 +65,20 @@ script = ExtResource("1_r4odj")
 [node name="Pickupable" parent="." instance=ExtResource("1_3wkcf")]
 position = Vector2(1, 0)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -9.0
-offset_top = -10.0
-offset_right = 11.0
-offset_bottom = 10.0
+[node name="IdleAnimationTimer" type="Timer" parent="."]
+wait_time = 3.105
+one_shot = true
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_7xt1y")
+hframes = 17
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k5uwu")
+}
 
 [connection signal="PickedUp" from="Pickupable" to="." method="OnPickupablePickedUp"]
+[connection signal="timeout" from="IdleAnimationTimer" to="." method="OnIdleAnimationTimerTimeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="OnAnimationPlayerAnimationFinished"]

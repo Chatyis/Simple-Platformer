@@ -5,6 +5,7 @@ public partial class Ui : CanvasLayer
 {
 	private Control _gameUi;
 	private Control _deathMenuUi;
+	private Control _winMenuUi;
 	
 	public override void _Ready()
 	{
@@ -12,6 +13,7 @@ public partial class Ui : CanvasLayer
 		UpdateScore();
 		_gameUi = GetNode<Control>("Game");
 		_deathMenuUi = GetNode<Control>("DeathMenu");
+		_winMenuUi = GetNode<Control>("WinMenu");
 	}
 
 	public void CoinPickUp()
@@ -30,15 +32,20 @@ public partial class Ui : CanvasLayer
 		_deathMenuUi.Visible = true;
 	}
 	
+	public void ShowWinMenu()
+	{
+		_winMenuUi.Visible = true;
+	}
+	
 	public void ToggleExtraLifeIcon(bool isTransparent)
 	{
-		var extraLifeIcon = GetNode<TextureRect>("ExtraLife");
+		var extraLifeIcon = GetNode<TextureRect>("Game/ExtraLife");
 		extraLifeIcon.Modulate = new Color(1f, 1f, 1f, isTransparent ? 0.2f : 1f);
 	}
 
 	private void UpdateScore()
 	{
-		GetNode<Label>("Game/Coins").Text = "Score: " + GlobalVar.Coins;
+		GetNode<Label>("Game/Coins").Text = "x " + GlobalVar.Coins;
 	}
 
 	private void OnStartBtnPressed()

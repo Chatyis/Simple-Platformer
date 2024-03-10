@@ -40,7 +40,7 @@ public partial class Player : CharacterBody2D
 		GravityImpactAndGrounded(ref velocity, delta);
 		
 		var xMovementDirection = Input.GetAxis("left", "right");
-		WallSlide(ref velocity, xMovementDirection, delta);
+		WallSlide(ref velocity);
 		
 		Movement(ref velocity, xMovementDirection);
 		
@@ -73,8 +73,7 @@ public partial class Player : CharacterBody2D
 
 	public void Win()
 	{
-		GetTree().ReloadCurrentScene();
-		GD.Print("You won!");
+		_ui.CallDeferred("ShowWinMenu");
 	}
 
 	public void AddSecondLife()
@@ -112,12 +111,29 @@ public partial class Player : CharacterBody2D
 		}
 	}
 	
-	private void WallSlide(ref Vector2 velocity, float xMovementDirection, double delta)
+	private void WallSlide(ref Vector2 velocity)
 	{
-		if (Mathf.Sign(_wallJumpDirection.X) != Mathf.Sign(xMovementDirection) && xMovementDirection != 0 && _canWallJump && Velocity.Y > 0)
+		if (IsOnWall() && Velocity.Y > 0)
 		{
+			for (int i = 0; i < GetSlideCollisionCount(); i++)
+			{
+				KinematicCollision2D collision = GetSlideCollision(i);
+				GD.Print("Collided with: ", collision.GetPosition().X - GlobalPosition.X);
+				
+				var xDistanceFromWall = collision.GetPosition().X - GlobalPosition.X;
+				var normalisedDistanceFromWall = xDistanceFromWall > 1 ? 1 : -1;
+				
+				_wallJumpDirection.X = normalisedDistanceFromWall * JumpVelocity;
+				_wallJumpDirection.Y = JumpVelocity / 1.5f;
+			}
+			
 			velocity.Y *=  0.80f;
+			_canWallJump = true;
 			_animationPlayer.Play("Wall_slide");
+		}
+		else if (IsOnFloor())
+		{
+			_canWallJump = false;
 		}
 	}
 
@@ -163,6 +179,7 @@ public partial class Player : CharacterBody2D
 			else if (_canWallJump)
 			{
 				velocity = _wallJumpDirection;
+				_canWallJump = false;
 			}
 			else
 			{
@@ -203,28 +220,6 @@ public partial class Player : CharacterBody2D
 		{
 			_wasOnFloorBeforeTogglingCoyoteTime = true;
 			_canUseCoyoteTime = true;
-		}
-	}
-	
-	private void OnWallJumpArea2DBodyEntered(Node2D body)
-	{
-		if (body.GetGroups().BinarySearch("terrain") > -1)
-		{
-			var xDistanceFromEnemy = body.GlobalPosition.X - GlobalPosition.X;
-			var normalisedDistanceFromEnemy = xDistanceFromEnemy / Mathf.Abs(xDistanceFromEnemy);
-		
-			_wallJumpDirection.X = normalisedDistanceFromEnemy * JumpVelocity;
-			_wallJumpDirection.Y = JumpVelocity / 1.5f;
-			
-			_canWallJump = true;
-		}
-	}
-
-	private void OnWallJumpArea2DBodyExited(Node2D body)
-	{
-		if (body.GetGroups().BinarySearch("terrain") > -1)
-		{
-			_canWallJump = false;
 		}
 	}
 	
